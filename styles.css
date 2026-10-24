@@ -1,5 +1,6 @@
 /* ==========================================================================
-   《測驗統計程式設計：現代 R 語言導向》 - 現代化人體工學排版與閱讀視覺優化
+   《測驗統計程式設計：現代 R 語言導向》 - 現代化中文閱讀習慣排版規範
+   依據 W3C《中文排版需求》(CLREQ) 與臺灣教育部、學術圖書出版排版標準建構
    ========================================================================== */
 
 /* 1. 繁體中文全域字型與排版節奏 (Typography & Line Height) */
@@ -12,21 +13,32 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 內文段落呼吸感 */
-p {
-  margin-bottom: 1.35rem;
+/* 2. 符合中文閱讀習慣：正文自然段落首行縮排兩字 (2em) 與版面兩端對齊 */
+main.content p {
+  text-indent: 2em;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  line-break: strict;
+  word-break: break-word;
+  margin-bottom: 1.25rem;
 }
 
-/* 標題層級與間距 */
-h1, h2, h3, h4, h5 {
-  font-weight: 700;
-  letter-spacing: -0.01em;
+/* 3. 嚴格例外排除：非一般自然段落結構一律「頂格、不縮排」 */
+
+/* (a) 標題群組：全級次標題絕不縮排 */
+h1, h2, h3, h4, h5, h6,
+.title, .subtitle,
+.quarto-title-block,
+.quarto-title-block * {
+  text-indent: 0 !important;
+  text-align: left !important;
 }
 
 h1.title {
   font-size: 2.25rem;
   line-height: 1.3;
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 h2 {
@@ -35,21 +47,32 @@ h2 {
   margin-bottom: 1rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  font-weight: 700;
 }
 
 h3 {
   font-size: 1.3rem;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  font-weight: 700;
 }
 
 h4 {
   font-size: 1.15rem;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
-/* 2. 本章目標與引用區塊：現代卡片式風格 (Academic Callout Cards) */
+/* (b) 本章目標、學術引言與專題卡片：整塊縮排左緣齊平，內部首行頂格 */
+blockquote,
+blockquote p,
+.callout,
+.callout p {
+  text-indent: 0 !important;
+  text-align: justify;
+}
+
 blockquote {
   border-left: 4px solid #3b82f6 !important;
   background-color: rgba(59, 130, 246, 0.06);
@@ -66,7 +89,34 @@ body.quarto-dark blockquote {
   color: #e2e8f0;
 }
 
-/* 3. 程式碼區塊外觀優化 (Code Blocks) */
+/* (c) 編號與符號列表：已有清單標記（項目點/序號），段落嚴禁二次縮排 */
+ul, ol, li,
+li p,
+ol li p,
+ul li p {
+  text-indent: 0 !important;
+  text-align: justify;
+}
+
+ul, ol {
+  padding-left: 1.6rem;
+  margin-bottom: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+/* (d) 程式碼與行內代碼：保護語法格式 */
+pre,
+pre p,
+code,
+.sourceCode,
+pre.sourceCode code {
+  text-indent: 0 !important;
+  text-align: left !important;
+}
+
 pre.sourceCode {
   border-radius: 8px;
   padding: 1rem 1.25rem !important;
@@ -93,7 +143,71 @@ body.quarto-dark p > code, body.quarto-dark li > code {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* 4. 左側目錄欄與切換按鈕優化 (Sidebar & Navigation) */
+/* (e) 數學公式 (KaTeX / MathJax)：獨立置中，不可偏置 */
+.katex-display,
+.math,
+div.math,
+.katex {
+  text-indent: 0 !important;
+}
+
+/* (f) 表格內容與圖表註記：儲存格頂格對齊 */
+table,
+table p,
+th,
+td,
+.gt_table,
+.gt_table p,
+figure p,
+figcaption,
+.figure-caption {
+  text-indent: 0 !important;
+}
+
+/* (g) 導覽、頁首頁尾、目錄與側邊欄元件 */
+nav,
+.sidebar,
+.toc,
+#TOC,
+.quarto-title-block p,
+.quarto-title-meta,
+.quarto-title-meta p,
+.breadcrumb,
+.page-footer,
+.page-footer p {
+  text-indent: 0 !important;
+  text-align: left !important;
+}
+
+/* (h) Mermaid 流程圖容器 */
+.mermaid,
+.mermaid div {
+  text-indent: 0 !important;
+  text-align: center;
+  margin: 2rem auto;
+  overflow-x: auto;
+  background: transparent !important;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  background: transparent !important;
+}
+
+/* 4. APA 7th 參考文獻專用「懸排（Hanging Indent）」：首行頂格，次行縮排 2em */
+section#參考文獻-references p,
+section[id*="參考文獻"] p,
+section[id*="references"] p,
+.references p,
+.csl-entry {
+  text-indent: -2em !important;
+  padding-left: 2em !important;
+  text-align: justify !important;
+  margin-bottom: 0.9rem !important;
+}
+
+/* 5. 左側目錄欄與切換按鈕優化 (Sidebar & Navigation) */
 .sidebar-title {
   font-weight: 700;
   font-size: 1.1rem;
@@ -126,20 +240,6 @@ body.quarto-dark p > code, body.quarto-dark li > code {
 .sidebar-tools-main .quarto-color-scheme-toggle::after {
   content: " 深淺閱覽切換";
   font-size: 0.82rem;
-}
-
-/* 5. Mermaid.js 向量架構圖無縫整合 (Transparent Diagrams) */
-.mermaid {
-  text-align: center;
-  margin: 2rem auto;
-  overflow-x: auto;
-  background: transparent !important;
-}
-
-.mermaid svg {
-  max-width: 100%;
-  height: auto;
-  background: transparent !important;
 }
 
 /* 6. 深色模式下的表格與插圖適配 (Dark Mode Table & Figure Polish) */
@@ -180,4 +280,19 @@ body.quarto-dark img:not(.quarto-nav-logo) {
 body:not(.quarto-dark) img:not(.quarto-nav-logo) {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 7. 手機與行動端響應式調整 */
+@media (max-width: 768px) {
+  body {
+    font-size: 1rem;
+    line-height: 1.8 !important;
+  }
+  main.content p {
+    text-indent: 2em;
+    text-align: justify;
+  }
+  .sidebar-tools-main .quarto-color-scheme-toggle::after {
+    display: none;
+  }
 }
