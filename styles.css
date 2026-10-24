@@ -1,35 +1,156 @@
 /* ==========================================================================
-   現代 R 語言測驗統計教科書 - 視覺優化與深色閱讀模式 (Dark Mode Styles)
+   《測驗統計程式設計：現代 R 語言導向》 - 現代化人體工學排版與閱讀視覺優化
    ========================================================================== */
 
-/* 主題切換按鈕顯著化 */
+/* 1. 繁體中文全域字型與排版節奏 (Typography & Line Height) */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.85 !important;
+  letter-spacing: 0.025em;
+  font-size: 1.05rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 內文段落呼吸感 */
+p {
+  margin-bottom: 1.35rem;
+}
+
+/* 標題層級與間距 */
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1.title {
+  font-size: 2.25rem;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 2. 本章目標與引用區塊：現代卡片式風格 (Academic Callout Cards) */
+blockquote {
+  border-left: 4px solid #3b82f6 !important;
+  background-color: rgba(59, 130, 246, 0.06);
+  padding: 1.1rem 1.4rem;
+  margin: 1.75rem 0;
+  border-radius: 0 10px 10px 0;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+body.quarto-dark blockquote {
+  border-left-color: #60a5fa !important;
+  background-color: rgba(96, 165, 250, 0.1);
+  color: #e2e8f0;
+}
+
+/* 3. 程式碼區塊外觀優化 (Code Blocks) */
+pre.sourceCode {
+  border-radius: 8px;
+  padding: 1rem 1.25rem !important;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+}
+
+/* 行內程式碼膠囊化 */
+p > code, li > code {
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background-color: rgba(128, 128, 128, 0.12);
+  color: #d63384;
+}
+
+body.quarto-dark p > code, body.quarto-dark li > code {
+  color: #f472b6;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 4. 左側目錄欄與切換按鈕優化 (Sidebar & Navigation) */
+.sidebar-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.sidebar-tools-main {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
 .quarto-color-scheme-toggle {
   display: inline-flex !important;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.9rem;
-  padding: 0.25rem 0.5rem !important;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.6rem !important;
   border-radius: 6px;
+  border: 1px solid rgba(128, 128, 128, 0.25);
   cursor: pointer;
+  text-decoration: none !important;
+}
+
+.quarto-color-scheme-toggle:hover {
+  background-color: rgba(128, 128, 128, 0.15);
 }
 
 .sidebar-tools-main .quarto-color-scheme-toggle::after {
   content: " 深淺閱覽切換";
   font-size: 0.82rem;
-  opacity: 0.85;
 }
 
-/* 深色模式下的 gt 表格自適應配色 */
+/* 5. Mermaid.js 向量架構圖無縫整合 (Transparent Diagrams) */
+.mermaid {
+  text-align: center;
+  margin: 2rem auto;
+  overflow-x: auto;
+  background: transparent !important;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  background: transparent !important;
+}
+
+/* 6. 深色模式下的表格與插圖適配 (Dark Mode Table & Figure Polish) */
 body.quarto-dark .gt_table {
-  background-color: #22252a !important;
+  background-color: #212529 !important;
   color: #e9ecef !important;
   border-top-color: #495057 !important;
   border-bottom-color: #495057 !important;
-}
-
-body.quarto-dark .gt_col_headings {
-  border-top-color: #495057 !important;
-  border-bottom-color: #495057 !important;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 body.quarto-dark .gt_col_heading {
@@ -38,33 +159,25 @@ body.quarto-dark .gt_col_heading {
 }
 
 body.quarto-dark .gt_row {
-  background-color: #22252a !important;
+  background-color: #212529 !important;
   color: #dee2e6 !important;
   border-bottom-color: #343a40 !important;
 }
 
 body.quarto-dark .gt_sourcenote {
-  background-color: #1e2124 !important;
+  background-color: #1a1d20 !important;
   color: #adb5bd !important;
-  border-top-color: #343a40 !important;
 }
 
-/* 深色模式下的圖表卡片式封裝，避免白色圖底刺眼突兀 */
+/* 插圖精緻邊框 */
 body.quarto-dark img:not(.quarto-nav-logo) {
   border-radius: 8px;
   background-color: #ffffff;
-  padding: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
 }
 
-/* Mermaid 流程圖容器排版 */
-.mermaid {
-  text-align: center;
-  margin: 1.5rem auto;
-  overflow-x: auto;
-}
-
-.mermaid svg {
-  max-width: 100%;
-  height: auto;
+body:not(.quarto-dark) img:not(.quarto-nav-logo) {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
