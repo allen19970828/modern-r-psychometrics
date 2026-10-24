@@ -1,0 +1,70 @@
+/* ==========================================================================
+   現代 R 語言測驗統計教科書 - 視覺優化與深色閱讀模式 (Dark Mode Styles)
+   ========================================================================== */
+
+/* 主題切換按鈕顯著化 */
+.quarto-color-scheme-toggle {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sidebar-tools-main .quarto-color-scheme-toggle::after {
+  content: " 深淺閱覽切換";
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+
+/* 深色模式下的 gt 表格自適應配色 */
+body.quarto-dark .gt_table {
+  background-color: #22252a !important;
+  color: #e9ecef !important;
+  border-top-color: #495057 !important;
+  border-bottom-color: #495057 !important;
+}
+
+body.quarto-dark .gt_col_headings {
+  border-top-color: #495057 !important;
+  border-bottom-color: #495057 !important;
+}
+
+body.quarto-dark .gt_col_heading {
+  background-color: #1a1d20 !important;
+  color: #f8f9fa !important;
+}
+
+body.quarto-dark .gt_row {
+  background-color: #22252a !important;
+  color: #dee2e6 !important;
+  border-bottom-color: #343a40 !important;
+}
+
+body.quarto-dark .gt_sourcenote {
+  background-color: #1e2124 !important;
+  color: #adb5bd !important;
+  border-top-color: #343a40 !important;
+}
+
+/* 深色模式下的圖表卡片式封裝，避免白色圖底刺眼突兀 */
+body.quarto-dark img:not(.quarto-nav-logo) {
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Mermaid 流程圖容器排版 */
+.mermaid {
+  text-align: center;
+  margin: 1.5rem auto;
+  overflow-x: auto;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}

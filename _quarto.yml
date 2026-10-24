@@ -7,6 +7,10 @@ book:
   subtitle: "Psychometrics and Assessment Statistics with Modern R: A Tidyverse Approach"
   author: "allen19970828"
   date: today
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/allen19970828/modern-r-psychometrics
   page-footer:
     left: "測驗統計程式設計：現代 R 語言導向"
     right: "Built with Quarto & Modern R"
@@ -55,8 +59,10 @@ book:
 format:
   html:
     theme:
-      light: cosmo
       dark: darkly
+      light: cosmo
+    respect-user-color-scheme: true
+    css: styles.css
     code-copy: true
     code-link: false
     toc: true
