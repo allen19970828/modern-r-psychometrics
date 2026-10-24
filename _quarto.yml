@@ -1,0 +1,65 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "測驗統計程式設計：現代 R 語言導向"
+  subtitle: "Psychometrics and Assessment Statistics with Modern R: A Tidyverse Approach"
+  author: "allen19970828"
+  date: today
+  page-footer:
+    left: "測驗統計程式設計：現代 R 語言導向"
+    right: "Built with Quarto & Modern R"
+  sidebar:
+    collapse-level: 1
+    style: "docked"
+    search: true
+  chapters:
+    - index.md
+    - part: "第一卷：R 程式設計基礎與計算思維"
+      chapters:
+        - book/Chapter_01_R_Foundations_and_Logic.md
+        - book/Chapter_02_Assessment_Data_Structures.md
+        - book/Chapter_03_Control_Flow_and_Algorithms.md
+        - book/Chapter_04_Functions_and_Defensive_Programming.md
+    - part: "第二卷：現代 Tidyverse 測驗資料工程"
+      chapters:
+        - book/Chapter_05_Tidy_Data_Wrangling.md
+        - book/Chapter_06_EDA_and_APA_Visualization.md
+    - part: "第三卷：機率推論與古典測驗理論 (CTT)"
+      chapters:
+        - book/Chapter_07_Probability_and_Simulation.md
+        - book/Chapter_08_MLE_and_Tidy_Inference.md
+        - book/Chapter_09_Classical_Test_Theory_CTT.md
+        - book/Chapter_10_Reliability_and_CSEM.md
+    - part: "第四卷：潛在構面與結構方程模型"
+      chapters:
+        - book/Chapter_11_Exploratory_Factor_Analysis_EFA.md
+        - book/Chapter_12_Confirmatory_Factor_Analysis_CFA.md
+        - book/Chapter_13_Measurement_Invariance.md
+    - part: "第五卷：現代試題反應理論 (Modern IRT)"
+      chapters:
+        - book/Chapter_14_Dichotomous_IRT_Models.md
+        - book/Chapter_15_IRT_Characteristic_Curves.md
+        - book/Chapter_16_Polytomous_IRT_Models.md
+        - book/Chapter_17_Differential_Item_Functioning_DIF.md
+    - part: "第六卷：評量工程實務：等化與標準設定"
+      chapters:
+        - book/Chapter_18_Equating_and_Standard_Setting.md
+        - book/Chapter_19_Standard_Setting_Analytics.md
+    - part: "第七卷：教育大數據與效度工程"
+      chapters:
+        - book/Chapter_20_Cognitive_Diagnostic_Models_CDM.md
+        - book/Chapter_21_Kane_Validity_Project.md
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    code-copy: true
+    code-link: false
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    smooth-scroll: true

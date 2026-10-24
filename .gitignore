@@ -1,0 +1,28 @@
+# Operating System files
+.DS_Store
+Thumbs.db
+._*
+
+# Reference materials & Large binaries (Prevent pushing copyrighted e-books)
+*.pdf
+*.epub
+*.zip
+*.tar.gz
+
+# Note-taking / Editor configs
+.obsidian/
+.vscode/
+.idea/
+
+# R session & environment
+.Rhistory
+.RData
+.RDataTmp
+.Rproj.user/
+
+# Quarto / Bookdown output directories
+.quarto/
+_book/
+_site/
+dist/
+node_modules/
