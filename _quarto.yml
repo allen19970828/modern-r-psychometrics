@@ -17,7 +17,6 @@ book:
     tools:
       - icon: github
         href: https://github.com/allen19970828/modern-r-psychometrics
-        title: "GitHub 專案倉庫"
   chapters:
     - index.md
     - part: "第一卷：R 程式設計基礎與計算思維"
