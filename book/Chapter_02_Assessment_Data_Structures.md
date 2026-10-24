@@ -9,14 +9,19 @@
 在測驗評量中，資料結構的選擇直接決定了計算效率與記憶體安全性。根據 Wickham（2019）與 Wickham 等人（2023）的分類架構，R 語言的資料結構可依據「維度（Dimensions）」與「元素同質性（Homogeneity）」劃分為四大象限：
 
 ```mermaid
-quadrantChart
-    title R 語言核心資料結構象限圖
-    x-axis "同質型態 (Homogeneous)" --> "異質型態 (Heterogeneous)"
-    y-axis "一維 (1D)" --> "二維 / 多維 (2D / nD)"
-    quadrant-1 "多維陣列 / 異質資料庫"
-    quadrant-2 "矩陣 Matrix / 陣列 Array\n(作答反應矩陣 N x J)"
-    quadrant-3 "原子向量 Atomic Vector / 因子 Factor\n(單一試題得分 / 李克特等級)"
-    quadrant-4 "資料框 Data Frame / Tibble\n串列 List (統計模型物件)"
+flowchart TD
+    subgraph Homogeneous["同質型態 (Homogeneous)"]
+        direction TB
+        V1["一維 (1D)<br>原子向量 Atomic Vector / 因子 Factor<br>(單一試題得分 / 李克特等級)"]
+        M1["二維 / 多維 (2D / nD)<br>矩陣 Matrix / 陣列 Array<br>(作答反應矩陣 N x J)"]
+    end
+    subgraph Heterogeneous["異質型態 (Heterogeneous)"]
+        direction TB
+        L1["一維 (1D)<br>串列 List<br>(統計模型物件 / 參數清單)"]
+        D1["二維 (2D)<br>資料框 Data Frame / Tibble<br>(多變項考生基本資料表)"]
+    end
+    style Homogeneous fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style Heterogeneous fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
 ```
 
 ### 2.1.1 矩陣的物理結構：欄優先儲存（Column-Major Order）

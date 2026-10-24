@@ -63,3 +63,67 @@ format:
     toc-depth: 3
     number-sections: true
     smooth-scroll: true
+    include-after-body:
+      - text: |
+          <script type="module">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+            const initMermaid = async () => {
+              const blocks = document.querySelectorAll("pre.mermaid, pre > code.language-mermaid, pre > code.mermaid, div.mermaid");
+              if (blocks.length === 0) return;
+
+              blocks.forEach((block) => {
+                const pre = block.tagName === "PRE" ? block : (block.tagName === "DIV" ? block : block.parentElement);
+                if (pre.dataset && pre.dataset.mermaidProcessed) return;
+
+                const content = block.textContent.trim();
+                const div = document.createElement("div");
+                div.className = "mermaid";
+                div.style.textAlign = "center";
+                div.style.margin = "1.5rem auto";
+                div.textContent = content;
+                div.dataset.diagram = content;
+                div.dataset.mermaidProcessed = "true";
+                pre.replaceWith(div);
+              });
+
+              const isDark = document.body.classList.contains("quarto-dark");
+              mermaid.initialize({
+                startOnLoad: false,
+                theme: isDark ? "dark" : "default",
+                securityLevel: "loose"
+              });
+
+              await mermaid.run({
+                querySelector: ".mermaid"
+              });
+            };
+
+            if (document.readyState === "loading") {
+              document.addEventListener("DOMContentLoaded", initMermaid);
+            } else {
+              initMermaid();
+            }
+
+            // 支援 Quarto 明暗主題切換時重新渲染
+            const observer = new MutationObserver((mutations) => {
+              for (const mutation of mutations) {
+                if (mutation.attributeName === "class" && mutation.target === document.body) {
+                  document.querySelectorAll("div.mermaid").forEach((div) => {
+                    if (div.dataset.diagram) {
+                      div.removeAttribute("data-processed");
+                      div.textContent = div.dataset.diagram;
+                    }
+                  });
+                  const isDark = document.body.classList.contains("quarto-dark");
+                  mermaid.initialize({
+                    startOnLoad: false,
+                    theme: isDark ? "dark" : "default",
+                    securityLevel: "loose"
+                  });
+                  mermaid.run({ querySelector: ".mermaid" });
+                }
+              }
+            });
+            observer.observe(document.body, { attributes: true });
+          </script>
