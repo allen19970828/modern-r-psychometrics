@@ -179,20 +179,80 @@ nav,
   text-align: left !important;
 }
 
-/* (h) Mermaid 流程圖容器 */
-.mermaid,
-.mermaid div {
+/* (h) Mermaid 流程圖容器與元件隔離保護 */
+div.mermaid {
   text-indent: 0 !important;
-  text-align: center;
-  margin: 2rem auto;
-  overflow-x: auto;
+  text-align: center !important;
+  margin: 2.25rem auto !important;
+  overflow-x: auto !important;
   background: transparent !important;
 }
 
-.mermaid svg {
-  max-width: 100%;
-  height: auto;
+div.mermaid svg {
+  max-width: 100% !important;
+  height: auto !important;
   background: transparent !important;
+  display: inline-block !important;
+}
+
+/* 徹底重設並保護 Mermaid 內部所有 SVG 與 foreignObject 元件，嚴防段落首行縮排、外距與文字溢出 */
+.mermaid svg foreignObject,
+.mermaid svg foreignObject div,
+.mermaid svg foreignObject span,
+.mermaid svg foreignObject p,
+.mermaid svg text,
+.mermaid svg tspan {
+  text-indent: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+  letter-spacing: normal !important;
+  line-height: 1.4 !important;
+}
+
+/* 淺色模式：強制深色高對比字體與清晰節點底色 */
+body:not(.quarto-dark) .mermaid text,
+body:not(.quarto-dark) .mermaid tspan,
+body:not(.quarto-dark) .mermaid .nodeLabel,
+body:not(.quarto-dark) .mermaid .label,
+body:not(.quarto-dark) .mermaid .cluster-label span,
+body:not(.quarto-dark) .mermaid .cluster-label text,
+body:not(.quarto-dark) .mermaid span,
+body:not(.quarto-dark) .mermaid p,
+body:not(.quarto-dark) .mermaid div {
+  color: #0f172a !important;
+  fill: #0f172a !important;
+  font-weight: 500;
+}
+
+/* 深色模式：強制淺色高對比字體與節點底色 */
+body.quarto-dark .mermaid text,
+body.quarto-dark .mermaid tspan,
+body.quarto-dark .mermaid .nodeLabel,
+body.quarto-dark .mermaid .label,
+body.quarto-dark .mermaid .cluster-label span,
+body.quarto-dark .mermaid .cluster-label text,
+body.quarto-dark .mermaid span,
+body.quarto-dark .mermaid p,
+body.quarto-dark .mermaid div {
+  color: #f8fafc !important;
+  fill: #f8fafc !important;
+  font-weight: 500;
+}
+
+/* 深色模式下節點與群組背景深色化保護（避免白底刺眼且保證白字清晰） */
+body.quarto-dark .mermaid .node rect,
+body.quarto-dark .mermaid .node circle,
+body.quarto-dark .mermaid .node ellipse,
+body.quarto-dark .mermaid .node polygon {
+  fill: #1e293b !important;
+  stroke: #60a5fa !important;
+}
+
+body.quarto-dark .mermaid .cluster rect {
+  fill: #0f172a !important;
+  stroke: #475569 !important;
 }
 
 /* 4. APA 7th 參考文獻專用「懸排（Hanging Indent）」：首行頂格，次行縮排 2em */
